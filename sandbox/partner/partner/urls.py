@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.contrib.auth.views import LogoutView
 
-from account.views import RegisterUserView, LoginUserView, DashboardView
+from partner.partner.views import RegisterUserView, LoginUserView, DashboardView
 
 urlpatterns = [
     # /account/register

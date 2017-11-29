@@ -9,12 +9,12 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, TemplateView
 
-from account.forms import RegisterUserForm, LoginForm
+from partner.partner.forms import RegisterUserForm, LoginForm
 
 
 class RegisterUserView(CreateView):
     form_class = RegisterUserForm
-    template_name = "partners/account/register.html"
+    template_name = "partner/account/register.html"
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
@@ -31,14 +31,14 @@ class RegisterUserView(CreateView):
 
 class LoginUserView(LoginView):
     form_class = LoginForm
-    template_name = "partners/account/login.html"
+    template_name = "partner/account/login.html"
     redirect_authenticated_user = True
     success_url = reverse_lazy('dashboard')
 
 
 @method_decorator(login_required, name='dispatch')
 class DashboardView(TemplateView):
-    template_name = 'partners/account/dashboard.html'
+    template_name = 'partner/account/dashboard.html'
     
     def dispatch(self, request, *args, **kwargs):
         return super(DashboardView, self).dispatch(request, *args, **kwargs)
